@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+import django_heroku
 
+load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,12 +23,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ub@_u48nqw^xo6lr=+-l-n3s)2=)f^8m5izzh%x!#y3jp=42$f'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: don't run with debug turned on in production!
+if os.environ.get('DJANGO_DEBUG'):
+    print("Debug is enabled.")
+    DEBUG = True
+    # When not specified, ALLOW_HOSTS defaults to:
+    # ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+else:
+    DEBUG = False
+    ALLOWED_HOSTS = ["https://tqsfrontend.herokuapp.com/", "https://www.tqsfrontend.herokuapp.com/"]
 
 
 # Application definition
@@ -120,3 +131,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+django_heroku.settings(locals())
