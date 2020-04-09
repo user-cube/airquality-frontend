@@ -1,1 +1,1 @@
-'web: gunicorn airquality_frontend.wsgi' 
+web: gunicorn airquality_frontend.wsgi
