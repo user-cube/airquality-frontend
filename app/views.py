@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 
 # Create your views here.
@@ -12,6 +13,8 @@ def home(request):
 
 def airquality(request, city):
     r = requests.get("https://tqsspring.herokuapp.com/airquality/"+ city)
+    if r.status_code != 200:
+        raise Http404
     dic = r.json()
     tparams = {
         'city' : city,
@@ -34,6 +37,8 @@ def airquality(request, city):
 
 def forecast(request, city):
     r = requests.get("https://tqsspring.herokuapp.com/forecast/" + city)
+    if r.status_code != 200:
+        raise Http404
     dic = r.json()
     tparams = {
         'city': city,
@@ -72,6 +77,8 @@ def forecast(request, city):
 
 def coordinates(request, city):
     r = requests.get("https://tqsspring.herokuapp.com/coordinates/" + city)
+    if r.status_code != 200:
+        raise Http404
     dic = r.json()
     tparams = {
         'city': city,
