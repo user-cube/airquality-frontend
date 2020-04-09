@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <br>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>City</th>
+            <th>Air Quality</th>
+            <th>Forecast</th>
+            <th>Coordinates</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for city in cities %}
+            <tr>
+                <td>{{city}}</td>
+                <td><a href="/airquality/{{ city }}" target="_blank">See air quality</a></td>
+                <td><a href="/forecast/{{ city }}" target="_blank">Check forecast</a></td>
+                <td><a href="/coordinates/{{ city }}" target="_blank">See coordinates</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

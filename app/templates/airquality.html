@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <br>
+    <br>
+    <h1>{{ city }} - {{ status }}</h1>
+    <hr>
+
+    <table class="table" style="text-align: center">
+        <thead class="thead-dark">
+        <tr>
+            <th>Information</th>
+            <th>Values</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Dominant pollutant</td>
+            <td>{{dominant}}</td>
+        </tr>
+        <tr>
+            <td>Nitrogen dioxide</td>
+            <td>{{no2}}</td>
+        </tr>
+        <tr>
+            <td>Ozone</td>
+            <td>{{o3}}</td>
+        </tr>
+        <tr>
+            <td>Fine particulate matter (<2.5µm)</td>
+            <td>{{pm25}}</td>
+        </tr>
+        <tr>
+            <td>Sulfur dioxide</td>
+            <td>{{so2}}</td>
+        </tr>
+        <tr>
+            <td>Inhalable particulate matter (<10µm)</td>
+            <td>{{pm10}}</td>
+        </tr>
+        <tr>
+            <td>Carbone monoxide</td>
+            <td>{{co}}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
