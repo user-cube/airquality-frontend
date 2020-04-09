@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <br>
+    <br>
+    <h1>{{ city }} - Forecast</h1>
+    <hr>
+
+    <table class="table" style="text-align: center">
+        <thead class="thead-dark">
+        <tr>
+            <th>Date</th>
+            <th>Min Temperature</th>
+            <th>Max Temperature</th>
+            <th>Percipitation probablity</th>
+            <th>Wind Direction</th>
+            <th>Wind Speed</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ day1Date }}</td>
+            <td>{{ day1TMin }} ºC</td>
+            <td>{{ day1TMax }} ºC</td>
+            <td>{{ day1TPreProb }} %</td>
+            <td>{{ day1WindDir }}</td>
+            <td>{{ day1WindSpeed }} km/h</td>
+        </tr>
+        <tr>
+            <td>{{ day2Date }}</td>
+            <td>{{ day2TMin }} ºC</td>
+            <td>{{ day2TMax }} ºC</td>
+            <td>{{ day2TPreProb }} %</td>
+            <td>{{ day2WindDir }}</td>
+            <td>{{ day2WindSpeed }} km/h</td>
+        </tr>
+        <tr>
+            <td>{{ day3Date }}</td>
+            <td>{{ day3TMin }} ºC</td>
+            <td>{{ day3TMax }} ºC</td>
+            <td>{{ day3TPreProb }} %</td>
+            <td>{{ day3WindDir }}</td>
+            <td>{{ day3WindSpeed }} km/h</td>
+        </tr>
+        <tr>
+            <td>{{ day4Date }}</td>
+            <td>{{ day4TMin }} ºC</td>
+            <td>{{ day4TMax }} ºC</td>
+            <td>{{ day4TPreProb }} %</td>
+            <td>{{ day4WindDir }}</td>
+            <td>{{ day4WindSpeed }} km/h</td>
+        </tr>
+        <tr>
+            <td>{{ day5Date }}</td>
+            <td>{{ day5TMin }} ºC</td>
+            <td>{{ day5TMax }} ºC</td>
+            <td>{{ day5TPreProb }} %</td>
+            <td>{{ day5WindDir }}</td>
+            <td>{{ day5WindSpeed }} km/h</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

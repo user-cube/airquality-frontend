@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+   <br>
+    <br>
+    <h1>{{ city }} - Coordinates</h1>
+    <hr>
+
+    <table class="table" style="text-align: center">
+        <thead class="thead-dark">
+        <tr>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ latitude }}</td>
+            <td>{{ longitude }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}
