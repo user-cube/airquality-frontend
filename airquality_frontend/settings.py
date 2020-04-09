@@ -36,7 +36,7 @@ if os.environ.get('DJANGO_DEBUG'):
     # ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ["https://tqsfrontend.herokuapp.com/"]
+    ALLOWED_HOSTS = [".herokuapp.com"]
 
 
 # Application definition
