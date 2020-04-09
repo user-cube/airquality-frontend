@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
-class TestDefaultSuite():
+class AirQualityTest():
     def setup_method(self):
         self.driver = webdriver.Chrome()
         self.vars = {}
@@ -22,7 +22,7 @@ class TestDefaultSuite():
         if len(wh_now) > len(wh_then):
             return set(wh_now).difference(set(wh_then)).pop()
 
-    def test_getAirQualityData(self):
+    def airqualityTest(self):
         self.driver.get("https://tqsfrontend.herokuapp.com/")
         self.driver.set_window_size(838, 573)
         self.vars["window_handles"] = self.driver.window_handles
@@ -49,3 +49,66 @@ class TestDefaultSuite():
         self.driver.find_element(By.CSS_SELECTOR, "h1").click()
         self.driver.find_element(By.CSS_SELECTOR, "h1").click()
 
+
+
+class ForecastTest():
+    def setup_method(self):
+        self.driver = webdriver.Chrome()
+        self.vars = {}
+
+    def teardown_method(self):
+        self.driver.quit()
+
+    def wait_for_window(self, timeout=2):
+        time.sleep(round(timeout / 1000))
+        wh_now = self.driver.window_handles
+        wh_then = self.vars["window_handles"]
+        if len(wh_now) > len(wh_then):
+            return set(wh_now).difference(set(wh_then)).pop()
+
+    def test_forecast(self):
+        self.driver.get("https://tqsfrontend.herokuapp.com/")
+        self.driver.set_window_size(838, 573)
+        self.vars["window_handles"] = self.driver.window_handles
+        self.driver.find_element(By.LINK_TEXT, "Check forecast").click()
+        self.vars["win5817"] = self.wait_for_window(2000)
+        self.driver.switch_to.window(self.vars["win5817"])
+        self.driver.find_element(By.CSS_SELECTOR, ".body-content").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".thead-dark > tr").click()
+        self.driver.find_element(By.CSS_SELECTOR, "h1").click()
+        self.driver.find_element(By.CSS_SELECTOR, "h1").click()
+        element = self.driver.find_element(By.CSS_SELECTOR, "h1")
+        actions = ActionChains(self.driver)
+        actions.double_click(element).perform()
+        self.driver.find_element(By.CSS_SELECTOR, "h1").click()
+
+
+class CoordinatesTest():
+    def setup_method(self):
+        self.driver = webdriver.Chrome()
+        self.vars = {}
+
+    def teardown_method(self):
+        self.driver.quit()
+
+    def wait_for_window(self, timeout=2):
+        time.sleep(round(timeout / 1000))
+        wh_now = self.driver.window_handles
+        wh_then = self.vars["window_handles"]
+        if len(wh_now) > len(wh_then):
+            return set(wh_now).difference(set(wh_then)).pop()
+
+    def test_coord(self):
+        self.driver.get("https://tqsfrontend.herokuapp.com/")
+        self.driver.set_window_size(1489, 880)
+        self.vars["window_handles"] = self.driver.window_handles
+        self.driver.find_element(By.LINK_TEXT, "See coordinates").click()
+        self.vars["win6475"] = self.wait_for_window(2000)
+        self.driver.switch_to.window(self.vars["win6475"])
+        self.driver.find_element(By.CSS_SELECTOR, ".body-content").click()
+        self.driver.find_element(By.CSS_SELECTOR, "h1").click()
+        self.driver.find_element(By.CSS_SELECTOR, "h1").click()
+        element = self.driver.find_element(By.CSS_SELECTOR, "h1")
+        actions = ActionChains(self.driver)
+        actions.double_click(element).perform()
+        self.driver.find_element(By.CSS_SELECTOR, "h1").click()
